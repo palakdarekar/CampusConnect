@@ -1,3 +1,4 @@
+```java
 package backend.controller;
 
 import backend.entity.User;
@@ -10,7 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://campus-connect-dusky-tau.vercel.app")
 public class UserController {
 
     private final UserRepository userRepository;
@@ -26,10 +27,8 @@ public class UserController {
 
     @PostMapping("/login")
     public Map<String, String> loginUser(@RequestBody User user) {
-
         return userRepository.findByEmail(user.getEmail())
                 .map(existingUser -> {
-
                     Map<String, String> response = new HashMap<>();
 
                     if (existingUser.getPassword().equals(user.getPassword())) {
@@ -43,24 +42,23 @@ public class UserController {
                     return response;
                 })
                 .orElseGet(() -> {
-
                     Map<String, String> response = new HashMap<>();
                     response.put("message", "User not found");
-
                     return response;
                 });
     }
 
     @PostMapping("/forgot-password")
-    public Map<String, String> forgotPassword(@RequestBody Map<String, String> request) {
+    public Map<String, String> forgotPassword(
+            @RequestBody Map<String, String> request) {
 
         Map<String, String> response = new HashMap<>();
 
         String email = request.get("email");
         String newPassword = request.get("newPassword");
 
-        if (email == null || newPassword == null ||
-                email.isBlank() || newPassword.isBlank()) {
+        if (email == null || newPassword == null
+                || email.isBlank() || newPassword.isBlank()) {
 
             response.put("message", "Email and new password are required.");
             return response;
@@ -68,7 +66,6 @@ public class UserController {
 
         return userRepository.findByEmail(email)
                 .map(existingUser -> {
-
                     existingUser.setPassword(newPassword);
                     userRepository.save(existingUser);
 
@@ -76,9 +73,10 @@ public class UserController {
                     return response;
                 })
                 .orElseGet(() -> {
-
-                    response.put("message", "No account found with this email.");
+                    response.put("message",
+                            "No account found with this email.");
                     return response;
                 });
     }
 }
+```
