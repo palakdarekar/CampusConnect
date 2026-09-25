@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "https://campus-connect-dusky-tau.vercel.app")
+@CrossOrigin(originPatterns = "https://*.vercel.app")
 public class UserController {
 
     private final UserRepository userRepository;
