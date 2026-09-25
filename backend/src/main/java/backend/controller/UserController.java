@@ -1,4 +1,4 @@
-```java
+
 package backend.controller;
 
 import backend.entity.User;
@@ -11,7 +11,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(originPatterns = "https://*.vercel.app")
+
 public class UserController {
 
     private final UserRepository userRepository;
@@ -79,4 +79,4 @@ public class UserController {
                 });
     }
 }
-```
+

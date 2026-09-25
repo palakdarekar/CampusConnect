@@ -1,4 +1,4 @@
-```java
+
 package backend.controller;
 
 import backend.entity.Registration;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/registrations")
-@CrossOrigin(origins = "https://campus-connect-dusky-tau.vercel.app")
+
 public class RegistrationController {
 
     private final RegistrationRepository registrationRepository;
@@ -35,4 +35,4 @@ public class RegistrationController {
         return registrationRepository.findByEmail(email);
     }
 }
-```
+
