@@ -1,14 +1,16 @@
+```java
 package backend.controller;
 
 import backend.entity.Registration;
 import backend.repository.RegistrationRepository;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/registrations")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://campus-connect-dusky-tau.vercel.app")
 public class RegistrationController {
 
     private final RegistrationRepository registrationRepository;
@@ -23,13 +25,14 @@ public class RegistrationController {
     }
 
     @GetMapping
-public List<Registration> getAllRegistrations() {
-    return registrationRepository.findAll();
-}
+    public List<Registration> getAllRegistrations() {
+        return registrationRepository.findAll();
+    }
 
-@GetMapping("/user")
-public List<Registration> getUserRegistrations(
-        @RequestParam String email) {
-    return registrationRepository.findByEmail(email);
+    @GetMapping("/user")
+    public List<Registration> getUserRegistrations(
+            @RequestParam String email) {
+        return registrationRepository.findByEmail(email);
+    }
 }
-}
+```
