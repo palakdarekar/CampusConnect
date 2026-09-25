@@ -34,7 +34,7 @@ function App() {
     }
 
     try {
-      const url = `http://localhost:8080/api/registrations/user?email=${encodeURIComponent(
+     const url = `https://campus-connect-newp.vercel.app/api/registrations/user?email=${encodeURIComponent(
         loggedInUser.email
       )}`;
 
@@ -124,7 +124,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/registrations",
+        "https://campus-connect-newp.vercel.app/api/registrations",
         {
           method: "POST",
           headers: {
@@ -173,7 +173,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/users/login",
+       "https://campus-connect-newp.vercel.app/api/users/login",
         {
           method: "POST",
           headers: {
@@ -230,7 +230,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/users/register",
+       "https://campus-connect-newp.vercel.app/api/users/register",
         {
           method: "POST",
           headers: {
@@ -280,7 +280,7 @@ function App() {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/api/users/forgot-password",
+        "https://campus-connect-newp.vercel.app/api/users/forgot-password",
         {
           method: "POST",
           headers: {
