@@ -1,9 +1,7 @@
-
 package backend.controller;
 
 import backend.entity.User;
 import backend.repository.UserRepository;
-
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -11,7 +9,6 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
-
 public class UserController {
 
     private final UserRepository userRepository;
@@ -27,8 +24,10 @@ public class UserController {
 
     @PostMapping("/login")
     public Map<String, String> loginUser(@RequestBody User user) {
+
         return userRepository.findByEmail(user.getEmail())
                 .map(existingUser -> {
+
                     Map<String, String> response = new HashMap<>();
 
                     if (existingUser.getPassword().equals(user.getPassword())) {
@@ -42,8 +41,10 @@ public class UserController {
                     return response;
                 })
                 .orElseGet(() -> {
+
                     Map<String, String> response = new HashMap<>();
                     response.put("message", "User not found");
+
                     return response;
                 });
     }
@@ -66,17 +67,22 @@ public class UserController {
 
         return userRepository.findByEmail(email)
                 .map(existingUser -> {
+
                     existingUser.setPassword(newPassword);
                     userRepository.save(existingUser);
 
                     response.put("message", "Password reset successfully.");
+
                     return response;
                 })
                 .orElseGet(() -> {
-                    response.put("message",
-                            "No account found with this email.");
+
+                    response.put(
+                            "message",
+                            "No account found with this email."
+                    );
+
                     return response;
                 });
     }
 }
-
